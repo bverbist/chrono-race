@@ -1,24 +1,27 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getId, getNumber} from './teamSelectors';
+import {getId, getNumber, isChronoStarted} from './teamSelectors';
 import {startTeamChrono, stopTeamChrono, resetTeamChrono} from '../raceActions';
 
 const RaceTeamP = ({
     team,
     onStartTeamChrono, onStopTeamChrono, onResetTeamChrono
 }) => (
-    <div className="team">
+    <div className="team container">
         <span>{getNumber(team)}.</span>
         <div>
-            <button className="btn btn-default"
+            <button className="btn btn-success"
+                    disabled={isChronoStarted(team)}
                     onClick={() => onStartTeamChrono(getId(team))}>
                 Start
             </button>
-            <button className="btn btn-default"
+            <button className="btn btn-warning"
+                    disabled={!isChronoStarted(team)}
                     onClick={() => onStopTeamChrono(getId(team))}>
                 Stop
             </button>
-            <button className="btn btn-default"
+            <button className="btn btn-danger"
+                    disabled={!isChronoStarted(team)}
                     onClick={() => onResetTeamChrono(getId(team))}>
                 Reset
             </button>

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import {NO_TIMESTAMP} from './team/TeamBuilder';
+import {isChronoStarted} from './team/teamSelectors';
 
 export const isOnSetupPage = (state) =>
     state.race.nrOfGroups === 0;
@@ -31,5 +31,5 @@ export const getTeamsOfGroup = (state) =>
 
 export const isAtLeastOneChronoStartedOfGroup = (state) =>
     (groupNumber) => _.findIndex(getTeams(state), (team) =>
-        team.groupNumber === groupNumber && team.startTimestamp !== NO_TIMESTAMP
+        team.groupNumber === groupNumber && isChronoStarted(team)
     ) > -1;

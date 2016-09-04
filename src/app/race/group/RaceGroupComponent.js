@@ -8,7 +8,7 @@ const RaceGroupP = ({
     groupNumber, getTeams, isAtLeastOneChronoStarted,
     onStartGroupChronos
 }) => (
-    <div className="group">
+    <div className="group container">
         <b>Group {groupNumber}</b>&nbsp;
         <button className="btn btn-success"
                 disabled={isAtLeastOneChronoStarted(groupNumber)}
