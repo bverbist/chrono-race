@@ -1,0 +1,7 @@
+/node_modules
+/src/jspm_packages
+/src/css
+
+.idea
+.DS_Store
+*.log
