@@ -17,13 +17,15 @@ const SetupP = ({
             <div className="container">
                 <h2>Setup</h2>
                 <p>Choose the number of teams participating in the chrono race. Split them up
-                    over multiple groups if not all teams start together.<br />
-                    After setup is ok, go to the race page by clicking on 'Go to Race'.
+                    over multiple groups if not all teams start at the same time.<br />
+                    After the setup is ok, go to the race page by clicking on 'Go to Race'.
                 </p>
                 <p>
+                    Race title:&nbsp;
                     <input type="text"
                            value={raceTitle}
                            onChange={(event) => onSaveTitle(event.target.value)} />
+                </p><p>
                     <button className="btn btn-primary btn-lg"
                             disabled={!isRaceStartable}
                             onClick={onGoToRace}>
