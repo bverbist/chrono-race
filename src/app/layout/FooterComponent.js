@@ -4,7 +4,7 @@ import {getCurrentYear} from '../util/dateUtil';
 const INITIAL_YEAR = 2016;
 
 const Footer = () => (
-    <div>
+    <div className="container">
         <hr />
 
         <footer>
