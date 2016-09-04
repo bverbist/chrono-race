@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import TeamBuilder from './TeamBuilder';
-import {toInt} from '../util/numberUtil';
+import TeamBuilder from '../team/TeamBuilder';
+import {toInt} from '../../util/numberUtil';
 
 function mapToTeams(groups) {
     const teams = [];

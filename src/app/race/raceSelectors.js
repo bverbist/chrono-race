@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import {NO_TIMESTAMP} from './TeamBuilder';
+import {NO_TIMESTAMP} from './team/TeamBuilder';
 
 export const isOnSetupPage = (state) =>
     state.race.nrOfGroups === 0;

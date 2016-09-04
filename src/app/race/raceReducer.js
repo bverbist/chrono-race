@@ -7,9 +7,9 @@ import {
     RESET_TEAM_CHRONO,
     START_GROUP_CHRONOS
 } from './raceActions';
-import mapToTeams from './groupsMapper';
+import mapToTeams from './group/groupsMapper';
 import {getCurrentTimestamp} from '../util/timeUtil';
-import {NO_TIMESTAMP} from './TeamBuilder';
+import {NO_TIMESTAMP} from './team/TeamBuilder';
 
 const INITIAL_STATE = {
     title: '',

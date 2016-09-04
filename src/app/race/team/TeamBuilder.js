@@ -1,4 +1,4 @@
-import generateId from '../util/idGenerator';
+import generateId from '../../util/idGenerator';
 
 export const NO_TIMESTAMP = null;
 

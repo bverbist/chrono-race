@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {isOnRacePage, getRaceTitle, getGroups} from './raceSelectors';
-import RaceGroup from './RaceGroupComponent';
+import RaceGroup from './group/RaceGroupComponent';
 
 const RaceP = ({
     isVisible, raceTitle, groups
