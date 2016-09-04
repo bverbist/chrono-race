@@ -5,8 +5,8 @@ import {isOnSetupPage} from '../race/raceSelectors';
 import {getRaceTitle, getGroups, getNrOfGroups} from './setupSelectors';
 import {saveTitle, addGroup, removeGroup, saveGroup} from './setupActions';
 import {goToRace} from '../flow/flowActions';
-import Group from './GroupComponent';
-import {isValidNumber} from '../util/numberUtil';
+import SetupGroup from './SetupGroupComponent';
+import {isValidNumber, toInt} from '../util/numberUtil';
 
 const SetupP = ({
     isVisible, isExactlyOneGroup, groups, raceTitle, isRaceStartable,
@@ -37,7 +37,7 @@ const SetupP = ({
         <div className="container">
             {groups.map((group, index) =>
                 <div className="row" key={index}>
-                    <Group number={group.number}
+                    <SetupGroup number={group.number}
                            nrOfTeams={group.nrOfTeams}
                            onSaveGroup={onSaveGroup} />
                 </div>
@@ -96,13 +96,13 @@ function isValidRaceTitle(raceTitle) {
 }
 
 function areGroupsValid(groups) {
-    const invalidGroups = _.filter(groups, (group) => isNrOfTeamsInvalidOrZero(group.nrOfTeams));
+    const invalidGroups = _.filter(groups, (group) => isNrOfTeamsInvalidOrSmallerThanZero(group.nrOfTeams));
     return invalidGroups.length === 0;
 }
 
-function isNrOfTeamsInvalidOrZero(nrOfTeams) {
+function isNrOfTeamsInvalidOrSmallerThanZero(nrOfTeams) {
     if (!isValidNumber(nrOfTeams)) {
         return true;
     }
-    return nrOfTeams === '0';
+    return toInt(nrOfTeams) <= 0;
 }

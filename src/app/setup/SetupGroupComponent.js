@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Group = ({number, nrOfTeams, onSaveGroup}) => {
+const SetupGroup = ({number, nrOfTeams, onSaveGroup}) => {
     const saveGroup = (newNrOfTeams) => {
         onSaveGroup(number, newNrOfTeams);
     };
@@ -18,4 +18,4 @@ const Group = ({number, nrOfTeams, onSaveGroup}) => {
     );
 };
 
-export default Group;
+export default SetupGroup;
