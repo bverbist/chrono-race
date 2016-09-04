@@ -38,8 +38,8 @@ const SetupP = ({
             {groups.map((group, index) =>
                 <div className="row" key={index}>
                     <SetupGroup number={group.number}
-                           nrOfTeams={group.nrOfTeams}
-                           onSaveGroup={onSaveGroup} />
+                                nrOfTeams={group.nrOfTeams}
+                                onSaveGroup={onSaveGroup} />
                 </div>
             )}
             <div className="row">

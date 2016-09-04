@@ -1,28 +1,36 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
-import {isOnRacePage} from './raceSelectors';
-import {startGroupChronos} from './raceActions';
+import {isOnRacePage, getRaceTitle, getGroups} from './raceSelectors';
+import RaceGroup from './RaceGroupComponent';
 
-const RaceP = ({isVisible}) => (
-    <div className={isVisible ? 'jumbotron' : 'hidden'}>
+const RaceP = ({
+    isVisible, raceTitle, groups
+}) => (
+    <div className={isVisible ? 'race' : 'hidden'}>
+        <div className="jumbotron">
+            <div className="container">
+                <h2>Race '{raceTitle}'</h2>
+                <p>You can start the chrono's of all teams within a group simultaneously.</p>
+            </div>
+        </div>
         <div className="container">
-            <h2>Race</h2>
+            {groups.map((group, index) =>
+                <div className="row" key={index}>
+                    <RaceGroup groupNumber={group.number} />
+                    <hr className={index === groups.length - 1 ? 'hidden' : ''} />
+                </div>
+            )}
         </div>
     </div>
 );
 
-RaceP.PropTypes = {
-    isVisible: PropTypes.bool.isRequired
-};
-
 const mapStateToProps = (state) => ({
-    isVisible: isOnRacePage(state)
+    isVisible: isOnRacePage(state),
+    raceTitle: getRaceTitle(state),
+    groups: getGroups(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    onStartGroupChronos: (groupNumber) =>
-        dispatch(startGroupChronos(groupNumber))
-});
+const mapDispatchToProps = (/* dispatch */) => ({});
 
 const Race = connect(
     mapStateToProps,

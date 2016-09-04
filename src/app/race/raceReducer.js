@@ -90,5 +90,5 @@ function getTeamById(teams, teamId) {
 }
 
 function getTeamsWithGroupNumber(teams, groupNumber) {
-    _.filter(teams, {groupNumber});
+    return _.filter(teams, {groupNumber});
 }
