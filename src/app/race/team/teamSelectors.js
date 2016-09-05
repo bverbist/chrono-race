@@ -1,4 +1,4 @@
-import {NO_TIMESTAMP} from './TeamBuilder';
+import {NO_TIMESTAMP} from '../../util/timeUtil';
 
 export const getId = (team) =>
     team.id;
@@ -17,3 +17,6 @@ export const getStopTimestamp = (team) =>
 
 export const isChronoStarted = (team) =>
     getStartTimestamp(team) !== NO_TIMESTAMP;
+
+export const isChronoStopped = (team) =>
+    getStopTimestamp(team) !== NO_TIMESTAMP;

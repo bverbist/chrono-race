@@ -1,7 +1,10 @@
+/* global setInterval clearInterval */
+
 import React from 'react';
 import {connect} from 'react-redux';
-import {getId, getNumber, isChronoStarted} from './teamSelectors';
+import {getId, getNumber, isChronoStarted, isChronoStopped, getStartTimestamp, getStopTimestamp} from './teamSelectors';
 import {startTeamChrono, stopTeamChrono, resetTeamChrono} from '../raceActions';
+import Chrono from '../chronometer/ChronoComponent';
 
 const RaceTeamP = ({
     team,
@@ -11,20 +14,22 @@ const RaceTeamP = ({
         <span>{getNumber(team)}.</span>
         <div>
             <button className="btn btn-success"
-                    disabled={isChronoStarted(team)}
+                    disabled={isChronoStarted(team) && !isChronoStopped(team)}
                     onClick={() => onStartTeamChrono(getId(team))}>
                 Start
             </button>
             <button className="btn btn-warning"
-                    disabled={!isChronoStarted(team)}
+                    disabled={isChronoStopped(team)}
                     onClick={() => onStopTeamChrono(getId(team))}>
                 Stop
             </button>
             <button className="btn btn-danger"
-                    disabled={!isChronoStarted(team)}
+                    disabled={!isChronoStopped(team)}
                     onClick={() => onResetTeamChrono(getId(team))}>
                 Reset
             </button>
+            <Chrono startTimestamp={getStartTimestamp(team)}
+                    stopTimestamp={getStopTimestamp(team)} />
         </div>
     </div>
 );

@@ -8,8 +8,7 @@ import {
     START_GROUP_CHRONOS
 } from './raceActions';
 import mapToTeams from './group/groupsMapper';
-import {getCurrentTimestamp} from '../util/timeUtil';
-import {NO_TIMESTAMP} from './team/TeamBuilder';
+import {getCurrentTimestamp, NO_TIMESTAMP} from '../util/timeUtil';
 
 const INITIAL_STATE = {
     title: '',
@@ -41,7 +40,11 @@ const raceReducer = (state = INITIAL_STATE, action) => {
             const newState = _.cloneDeep(state);
 
             const team = getTeamById(newState.teams, action.payload.teamId);
-            team.startTimestamp = getCurrentTimestamp();
+            if (team.stopTimestamp === NO_TIMESTAMP) {
+                team.startTimestamp = getCurrentTimestamp();
+            } else {
+                team.stopTimestamp = NO_TIMESTAMP;
+            }
 
             return newState;
         }

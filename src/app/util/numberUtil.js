@@ -5,3 +5,7 @@ export const toInt = (number) =>
 
 export const isValidNumber = (input) =>
     input.match(NUMBER_REGEX) !== null;
+
+export const prefixWithZero = (number) => (
+    (number < 10) ? `0${number}` : number
+);

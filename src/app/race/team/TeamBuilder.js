@@ -1,6 +1,5 @@
 import generateId from '../../util/idGenerator';
-
-export const NO_TIMESTAMP = null;
+import {NO_TIMESTAMP} from '../../util/timeUtil';
 
 class TeamBuilder {
     static aTeam() {
