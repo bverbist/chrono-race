@@ -74,7 +74,7 @@ class Chrono extends React.Component {
             minutes = Math.floor(elapsedSeconds / 60);
             seconds = elapsedSeconds % 60;
 
-            if (minutes > 60) {
+            if (minutes >= 60) {
                 hours = Math.floor(minutes / 60);
                 minutes %= 60;
             }

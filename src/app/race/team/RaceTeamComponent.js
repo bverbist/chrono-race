@@ -18,12 +18,12 @@ const RaceTeamP = ({
                     onClick={() => onStartTeamChrono(getId(team))}>
                 Start
             </button>
-            <button className="btn btn-warning"
+            <button className="btn btn-danger"
                     disabled={isChronoStopped(team)}
                     onClick={() => onStopTeamChrono(getId(team))}>
                 Stop
             </button>
-            <button className="btn btn-danger"
+            <button className="btn btn-default"
                     disabled={!isChronoStopped(team)}
                     onClick={() => onResetTeamChrono(getId(team))}>
                 Reset
