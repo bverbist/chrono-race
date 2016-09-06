@@ -13,7 +13,7 @@
     "test": "gulp test",
     "dev": "gulp dev",
     "build": "gulp build",
-    "runBuild": "gulp serverDist"
+    "serveBuild": "gulp serveBuild"
   },
   "dependencies": {},
   "devDependencies": {
@@ -30,6 +30,7 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-eslint": "3.0.1",
     "gulp-if": "2.0.1",
+    "gulp-inject": "4.1.0",
     "gulp-jspm": "0.5.13",
     "gulp-rename": "1.2.2",
     "gulp-sass": "2.3.2",
@@ -67,6 +68,15 @@
         "registry": "jspm",
         "main": "dist/redux-saga",
         "dependencies": {}
+      },
+      "npm:react@15.3.1": {
+        "main": "dist/react"
+      },
+      "npm:react-dom@15.3.1": {
+        "main": "dist/react-dom"
+      },
+      "npm:react-redux@4.4.5": {
+        "main": "dist/react-redux"
       }
     }
   },

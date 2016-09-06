@@ -13,6 +13,7 @@ export const dirs = {
 export const paths = {
     css: `${dirs.assets}/css`,
     img: `${dirs.assets}/img`,
+    imgDist: `${dirs.dist}/assets/img`,
     sass: `${dirs.assets}/sass`
 };
 
@@ -24,6 +25,7 @@ export const fileNames = {
 export const files = {
     bundledAppJs: `${dirs.dist}/${fileNames.bundledAppJs}`,
     css: `${paths.css}/*.css`,
+    img: `${paths.img}/*.*`,
     gulpTasks: `${dirs.gulp}/**/*.js`,
     indexHtml: `${dirs.base}/index.html`,
     js: `${dirs.app}/**/*.js`,
