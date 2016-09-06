@@ -68,15 +68,6 @@
         "registry": "jspm",
         "main": "dist/redux-saga",
         "dependencies": {}
-      },
-      "npm:react@15.3.1": {
-        "main": "dist/react"
-      },
-      "npm:react-dom@15.3.1": {
-        "main": "dist/react-dom"
-      },
-      "npm:react-redux@4.4.5": {
-        "main": "dist/react-redux"
       }
     }
   },

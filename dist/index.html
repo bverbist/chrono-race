@@ -11,9 +11,16 @@
 <body>
 <div id="chrono-race"></div>
 
+<script src="./jspm_packages/system.js"></script>
+<script src="./jspm.conf.js"></script>
 <!-- inject:app:js -->
 <script src="/chrono-race.js"></script>
 <!-- endinject -->
+<script>
+    System.import('app/app')
+            .then(function() {})
+            .catch(console.error.bind(console));
+</script>
 
 </body>
 </html>

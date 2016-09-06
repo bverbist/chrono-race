@@ -12,7 +12,7 @@ gulp.task(bundleApp, () =>
     gulp.src(files.mainAppFile)
         .pipe(sourcemaps.init())
         .pipe(jspm({
-            selfExecutingBundle: true,
+            selfExecutingBundle: false,
             minify: true,
             mangle: true,
             lowResSourceMaps: true,
