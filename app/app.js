@@ -3,7 +3,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
-import '../css/app.css!';
+import '../assets/css/app.css!';
 import store from './config/configureRedux';
 import App from './layout/AppComponent';
 

@@ -38,10 +38,7 @@
     "minimist": "1.2.0"
   },
   "jspm": {
-    "directories": {
-      "baseURL": "src"
-    },
-    "configFile": "src/jspm.conf.js",
+    "configFile": "jspm.conf.js",
     "dependencies": {
       "bootstrap-sass": "github:twbs/bootstrap-sass@3.3.7",
       "css": "github:systemjs/plugin-css@0.1.27",

@@ -1,17 +1,19 @@
 import './argv';
 
 export const dirs = {
-    src: 'src',
+    base: './',
+    app: 'app',
+    assets: 'assets',
     dist: 'dist',
     gulp: 'gulp',
+    jspmPackages: 'jspm_packages',
     nodeModules: 'node_modules'
 };
 
 export const paths = {
-    app: `${dirs.src}/app`,
-    css: `${dirs.src}/css`,
-    jspmPackages: `${dirs.src}/jspm_packages`,
-    sass: `${dirs.src}/sass`
+    css: `${dirs.assets}/css`,
+    img: `${dirs.assets}/img`,
+    sass: `${dirs.assets}/sass`
 };
 
 export const fileNames = {
@@ -23,14 +25,13 @@ export const files = {
     bundledAppJs: `${dirs.dist}/${fileNames.bundledAppJs}`,
     css: `${paths.css}/*.css`,
     gulpTasks: `${dirs.gulp}/**/*.js`,
-    html: `${dirs.src}/**/*.html`,
-    indexHtml: `${dirs.src}/index.html`,
-    js: `${paths.app}/**/*.js`,
-    jsSpec: `${paths.app}/**/*.spec.js`,
-    jsNoSpec: `${paths.app}/**/!(*.spec).js`,
-    jspmConfig: `${dirs.src}/jspm.conf.js`,
-    mainAppFile: `${paths.app}/app.js`,
-    sass: `${dirs.sass}/*.scss`,
+    indexHtml: `${dirs.base}/index.html`,
+    js: `${dirs.app}/**/*.js`,
+    jsSpec: `${dirs.app}/**/*.spec.js`,
+    jsNoSpec: `${dirs.app}/**/!(*.spec).js`,
+    jspmConfig: `${dirs.base}/jspm.conf.js`,
+    mainAppFile: `${dirs.app}/app.js`,
+    sass: `${paths.sass}/*.scss`,
     sassMain: `${paths.sass}/app.scss`
 };
 

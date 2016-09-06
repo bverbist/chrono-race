@@ -3,7 +3,7 @@
 $icon-font-path: "../fonts/" !default;
 
 /* Include Bootstrap */
-@import "../jspm_packages/github/twbs/bootstrap-sass@3.3.7/assets/stylesheets/_bootstrap";
+@import "../../jspm_packages/github/twbs/bootstrap-sass@3.3.7/assets/stylesheets/_bootstrap";
 
 @import 'variables';
 @import 'setup';

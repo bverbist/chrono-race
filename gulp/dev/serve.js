@@ -11,10 +11,10 @@ gulp.task(serve, (callback) =>
             port: 8004,
             ui: false,
             ghostMode: false,
-            server: [dirs.src],
+            server: [dirs.base],
             files: [
                 files.css,
-                files.html,
+                files.indexHtml,
                 files.js
             ]
         }, callback)
