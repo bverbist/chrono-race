@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "App to track the time of several teams",
   "main": "dist/chrono-race.js",
+  "keywords": [
+    "chrono",
+    "teams"
+  ],
   "scripts": {
     "update": "npm install && jspm install",
     "setup": "npm install -g jspm && npm run update",
