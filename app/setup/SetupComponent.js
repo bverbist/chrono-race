@@ -25,12 +25,6 @@ const SetupP = ({
                     <input type="text"
                            value={raceTitle}
                            onChange={(event) => onSaveTitle(event.target.value)} />
-                </p><p>
-                    <button className="btn btn-primary btn-lg"
-                            disabled={!isRaceStartable}
-                            onClick={onGoToRace}>
-                        Go to Race
-                    </button>
                 </p>
             </div>
         </div>
@@ -51,6 +45,13 @@ const SetupP = ({
                         disabled={isExactlyOneGroup}
                         onClick={onRemoveGroup}>
                     Remove last Group
+                </button>
+            </div>
+            <div className="row">
+                <button className="btn btn-primary btn-lg"
+                        disabled={!isRaceStartable}
+                        onClick={onGoToRace}>
+                    Go to Race
                 </button>
             </div>
         </div>
