@@ -4,7 +4,7 @@ import React from 'react';
 import {getCurrentTimestamp, NO_TIMESTAMP} from '../../util/timeUtil';
 import {prefixWithZero} from '../../util/numberUtil';
 
-const CHRONO_INTERVAL_IN_MILLIS = 1000;
+const CHRONO_INTERVAL_IN_MILLIS = 500;
 
 class Chrono extends React.Component {
     constructor(props) {
@@ -60,16 +60,27 @@ class Chrono extends React.Component {
     }
 
     render() {
+        let millis = 0;
         let seconds = 0;
         let minutes = 0;
         let hours = 0;
 
         if (this.isStarted(this.props.startTimestamp)) {
-            const endTimestamp = this.isStopped(this.props.stopTimestamp) ?
-                this.props.stopTimestamp : this.state.currentTimestamp;
+            const isStopped = this.isStopped(this.props.stopTimestamp);
+
+            const endTimestamp = isStopped ?
+                this.props.stopTimestamp :
+                this.state.currentTimestamp;
 
             const elapsedMillis = endTimestamp - this.props.startTimestamp;
-            const elapsedSeconds = Math.round(elapsedMillis / 1000);
+            // const elapsedSeconds = isStopped ?
+            //     Math.floor(elapsedMillis / 1000) :
+            //     Math.round(elapsedMillis / 1000);
+            const elapsedSeconds = Math.floor(elapsedMillis / 1000);
+
+            if (isStopped) {
+                millis = elapsedMillis % 1000;
+            }
 
             minutes = Math.floor(elapsedSeconds / 60);
             seconds = elapsedSeconds % 60;
@@ -82,7 +93,12 @@ class Chrono extends React.Component {
 
         return (
             <div className="chronometer">
-                <div>{prefixWithZero(hours)}:{prefixWithZero(minutes)}:{prefixWithZero(seconds)}</div>
+                <div>
+                    {prefixWithZero(hours)}
+                    :{prefixWithZero(minutes)}
+                    :{prefixWithZero(seconds)}
+                    .{prefixWithZero(millis, 3)}
+                </div>
             </div>
         );
     }
