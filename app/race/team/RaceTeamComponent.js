@@ -2,16 +2,24 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
-import {getId, getNumber, isChronoStarted, isChronoStopped, getStartTimestamp, getStopTimestamp} from './teamSelectors';
-import {startTeamChrono, stopTeamChrono, resetTeamChrono} from '../raceActions';
+import {
+    getId, getNumber, getName,
+    isChronoStarted, isChronoStopped,
+    getStartTimestamp, getStopTimestamp
+} from './teamSelectors';
+import {saveTeamName, startTeamChrono, stopTeamChrono, resetTeamChrono} from '../raceActions';
 import Chrono from '../chronometer/ChronoComponent';
 
 const RaceTeamP = ({
     team,
-    onStartTeamChrono, onStopTeamChrono, onResetTeamChrono
+    onSaveTeamName, onStartTeamChrono, onStopTeamChrono, onResetTeamChrono
 }) => (
     <div className="team container">
         <span>{getNumber(team)}.</span>
+        <span>Team name:</span>
+        <input type="text"
+               value={getName(team)}
+               onChange={(event) => onSaveTeamName(getId(team), event.target.value)} />
         <div>
             <button className="btn btn-success"
                     disabled={isChronoStarted(team) && !isChronoStopped(team)}
@@ -37,6 +45,8 @@ const RaceTeamP = ({
 const mapStateToProps = (/* state */) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
+    onSaveTeamName: (teamId, teamName) =>
+        dispatch(saveTeamName(teamId, teamName)),
     onStartTeamChrono: (teamId) =>
         dispatch(startTeamChrono(teamId)),
     onStopTeamChrono: (teamId) =>

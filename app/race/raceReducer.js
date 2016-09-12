@@ -2,6 +2,7 @@ import _ from 'lodash';
 import {RESET_RACE} from '../flow/flowActions';
 import {
     INIT_RACE,
+    SAVE_TEAM_NAME,
     START_TEAM_CHRONO,
     STOP_TEAM_CHRONO,
     RESET_TEAM_CHRONO,
@@ -34,6 +35,15 @@ const raceReducer = (state = INITIAL_STATE, action) => {
 
         case RESET_RACE: {
             return Object.assign({}, INITIAL_STATE);
+        }
+
+        case SAVE_TEAM_NAME: {
+            const newState = _.cloneDeep(state);
+
+            const team = getTeamById(newState.teams, action.payload.teamId);
+            team.name = action.payload.teamName;
+
+            return newState;
         }
 
         case START_TEAM_CHRONO: {
