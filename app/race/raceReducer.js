@@ -10,6 +10,9 @@ import {
 } from './raceActions';
 import mapToTeams from './group/groupsMapper';
 import {getCurrentTimestamp, NO_TIMESTAMP} from '../util/timeUtil';
+import {formatAsChronoTime, NO_CHRONOTIME} from '../util/chronoUtil';
+
+const INCLUDE_EXACT_MILLIS = true;
 
 const INITIAL_STATE = {
     title: '',
@@ -54,6 +57,7 @@ const raceReducer = (state = INITIAL_STATE, action) => {
                 team.startTimestamp = getCurrentTimestamp();
             } else {
                 team.stopTimestamp = NO_TIMESTAMP;
+                team.chronoTime = NO_CHRONOTIME;
             }
 
             return newState;
@@ -64,6 +68,7 @@ const raceReducer = (state = INITIAL_STATE, action) => {
 
             const team = getTeamById(newState.teams, action.payload.teamId);
             team.stopTimestamp = getCurrentTimestamp();
+            team.chronoTime = formatAsChronoTime(team.startTimestamp, team.stopTimestamp, INCLUDE_EXACT_MILLIS);
 
             return newState;
         }
@@ -74,6 +79,7 @@ const raceReducer = (state = INITIAL_STATE, action) => {
             const team = getTeamById(newState.teams, action.payload.teamId);
             team.startTimestamp = NO_TIMESTAMP;
             team.stopTimestamp = NO_TIMESTAMP;
+            team.chronoTime = NO_CHRONOTIME;
 
             return newState;
         }

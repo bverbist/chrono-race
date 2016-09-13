@@ -1,10 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {isOnRacePage, getRaceTitle, getGroups} from './raceSelectors';
+import {isOnRacePage, getRaceTitle, getGroups, getStoppedTeamsSortedOnAscendingChrono} from './raceSelectors';
 import RaceGroup from './group/RaceGroupComponent';
+import FinishedTeam from './team/FinishedTeamComponent';
 
 const RaceP = ({
-    isVisible, raceTitle, groups
+    isVisible, raceTitle, groups, finishedTeams
 }) => (
     <div className={isVisible ? 'race' : 'hidden'}>
         <div className="jumbotron">
@@ -20,6 +21,13 @@ const RaceP = ({
                     <hr className={index === groups.length - 1 ? 'hidden' : ''} />
                 </div>
             )}
+            <br />
+            <h4>Finished teams</h4>
+            {finishedTeams.map((team, index) =>
+                <div className="row" key={index}>
+                    <FinishedTeam team={team} />
+                </div>
+            )}
         </div>
     </div>
 );
@@ -27,7 +35,8 @@ const RaceP = ({
 const mapStateToProps = (state) => ({
     isVisible: isOnRacePage(state),
     raceTitle: getRaceTitle(state),
-    groups: getGroups(state)
+    groups: getGroups(state),
+    finishedTeams: getStoppedTeamsSortedOnAscendingChrono(state)
 });
 
 const mapDispatchToProps = (/* dispatch */) => ({});

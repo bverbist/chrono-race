@@ -1,5 +1,6 @@
 import generateId from '../../util/idGenerator';
 import {NO_TIMESTAMP} from '../../util/timeUtil';
+import {NO_CHRONOTIME} from '../../util/chronoUtil';
 
 class TeamBuilder {
     static aTeam() {
@@ -13,7 +14,8 @@ class TeamBuilder {
             number: -1,
             name: '',
             startTimestamp: NO_TIMESTAMP,
-            stopTimestamp: NO_TIMESTAMP
+            stopTimestamp: NO_TIMESTAMP,
+            chronoTime: NO_CHRONOTIME
         };
     }
 

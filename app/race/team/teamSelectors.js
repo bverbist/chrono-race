@@ -15,6 +15,9 @@ export const getStartTimestamp = (team) =>
 export const getStopTimestamp = (team) =>
     team.stopTimestamp;
 
+export const getChronoTime = (team) =>
+    team.chronoTime;
+
 export const isChronoStarted = (team) =>
     getStartTimestamp(team) !== NO_TIMESTAMP;
 

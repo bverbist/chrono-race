@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import {isChronoStarted} from './team/teamSelectors';
+import {isChronoStarted, isChronoStopped} from './team/teamSelectors';
 
 export const isOnSetupPage = (state) =>
     state.race.nrOfGroups === 0;
@@ -33,3 +33,8 @@ export const isAtLeastOneChronoStartedOfGroup = (state) =>
     (groupNumber) => _.findIndex(getTeams(state), (team) =>
         team.groupNumber === groupNumber && isChronoStarted(team)
     ) > -1;
+
+export const getStoppedTeamsSortedOnAscendingChrono = (state) => {
+    const stoppedTeams = _.filter(getTeams(state), (team) => isChronoStopped(team));
+    return _.orderBy(stoppedTeams, ['chronoTime'], ['asc']);
+};

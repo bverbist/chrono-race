@@ -2,9 +2,9 @@
 
 import React from 'react';
 import {getCurrentTimestamp, NO_TIMESTAMP} from '../../util/timeUtil';
-import {prefixWithZero} from '../../util/numberUtil';
+import {getNotStartedChronoTime, formatAsChronoTime} from '../../util/chronoUtil';
 
-const CHRONO_INTERVAL_IN_MILLIS = 500;
+const CHRONO_INTERVAL_IN_MILLIS = 1000;
 
 class Chrono extends React.Component {
     constructor(props) {
@@ -60,10 +60,7 @@ class Chrono extends React.Component {
     }
 
     render() {
-        let millis = 0;
-        let seconds = 0;
-        let minutes = 0;
-        let hours = 0;
+        let chronoTime;
 
         if (this.isStarted(this.props.startTimestamp)) {
             const isStopped = this.isStopped(this.props.stopTimestamp);
@@ -72,33 +69,14 @@ class Chrono extends React.Component {
                 this.props.stopTimestamp :
                 this.state.currentTimestamp;
 
-            const elapsedMillis = endTimestamp - this.props.startTimestamp;
-            // const elapsedSeconds = isStopped ?
-            //     Math.floor(elapsedMillis / 1000) :
-            //     Math.round(elapsedMillis / 1000);
-            const elapsedSeconds = Math.floor(elapsedMillis / 1000);
-
-            if (isStopped) {
-                millis = elapsedMillis % 1000;
-            }
-
-            minutes = Math.floor(elapsedSeconds / 60);
-            seconds = elapsedSeconds % 60;
-
-            if (minutes >= 60) {
-                hours = Math.floor(minutes / 60);
-                minutes %= 60;
-            }
+            chronoTime = formatAsChronoTime(this.props.startTimestamp, endTimestamp, isStopped);
+        } else {
+            chronoTime = getNotStartedChronoTime();
         }
 
         return (
             <div className="chronometer">
-                <div>
-                    {prefixWithZero(hours)}
-                    :{prefixWithZero(minutes)}
-                    :{prefixWithZero(seconds)}
-                    .{prefixWithZero(millis, 3)}
-                </div>
+                {chronoTime}
             </div>
         );
     }
