@@ -1,7 +1,9 @@
 # chrono-race
 App to track the time of several teams
 
-Work in progress
+## demo
+
+https://bverbist.github.io/chrono-race/
 
 ## command line
 
