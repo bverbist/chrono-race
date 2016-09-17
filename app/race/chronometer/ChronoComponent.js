@@ -75,9 +75,9 @@ class Chrono extends React.Component {
         }
 
         return (
-            <div className="chronometer">
+            <span className="chrono-meter">
                 {chronoTime}
-            </div>
+            </span>
         );
     }
 }

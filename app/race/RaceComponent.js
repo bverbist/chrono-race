@@ -11,7 +11,10 @@ const RaceP = ({
         <div className="jumbotron">
             <div className="container">
                 <h2>Race '{raceTitle}'</h2>
-                <p>You can start the chrono's of all teams within a group simultaneously.</p>
+                <p>You can start the chrono's of all teams within a group simultaneously.<br />
+                    The finished teams will be displayed - and sorted by their time -
+                    automatically at the bottom of the page.
+                </p>
             </div>
         </div>
         <div className="container">
@@ -22,9 +25,9 @@ const RaceP = ({
                 </div>
             )}
             <br />
-            <h4>Finished teams</h4>
+            <h3>Finished teams</h3>
             {finishedTeams.map((team, index) =>
-                <div className="row" key={index}>
+                <div className="row teams" key={index}>
                     <FinishedTeam team={team} />
                 </div>
             )}

@@ -15,23 +15,25 @@ const RaceTeamP = ({
     onSaveTeamName, onStartTeamChrono, onStopTeamChrono, onResetTeamChrono
 }) => (
     <div className="team container">
-        <span>{getNumber(team)}.</span>
-        <span>Team name:</span>
+        <div className="label team-number">{getNumber(team)}.</div>
         <input type="text"
+               placeholder="team name"
                value={getName(team)}
+               size="22"
+               maxLength="20"
                onChange={(event) => onSaveTeamName(getId(team), event.target.value)} />
-        <div>
-            <button className="btn btn-success"
+        <div className="chrono-actions">
+            <button className="btn btn-success chrono-action"
                     disabled={isChronoStarted(team) && !isChronoStopped(team)}
                     onClick={() => onStartTeamChrono(getId(team))}>
                 Start
             </button>
-            <button className="btn btn-danger"
+            <button className="btn btn-danger chrono-action"
                     disabled={isChronoStopped(team)}
                     onClick={() => onStopTeamChrono(getId(team))}>
                 Stop
             </button>
-            <button className="btn btn-default"
+            <button className="btn btn-primary chrono-action"
                     disabled={!isChronoStopped(team)}
                     onClick={() => onResetTeamChrono(getId(team))}>
                 Reset

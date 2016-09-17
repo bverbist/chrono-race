@@ -5,7 +5,7 @@ import Race from '../race/RaceComponent';
 import Footer from './FooterComponent';
 
 const App = () => (
-    <div>
+    <div className="chrono-race-app">
         <Header />
         <Setup />
         <Race />

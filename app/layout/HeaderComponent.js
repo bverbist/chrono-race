@@ -6,7 +6,7 @@ const HeaderP = ({onSetupNewRace}) => (
     <nav className="navbar navbar-inverse navbar-fixed-top">
         <div className="container">
             <div className="navbar-header">
-                <div className="navbar-brand">Chrono Race</div>
+                <h1 className="navbar-brand">Chrono Race</h1>
             </div>
             <div id="navbar">
                 <div className="navbar-form navbar-right">

@@ -21,9 +21,11 @@ const SetupP = ({
                     After the setup is ok, go to the race page by clicking on 'Go to Race'.
                 </p>
                 <p>
-                    Race title:&nbsp;
+                    <span className="label stronger">Race title:</span>
                     <input type="text"
                            value={raceTitle}
+                           size="35"
+                           maxLength="30"
                            onChange={(event) => onSaveTitle(event.target.value)} />
                 </p>
             </div>
@@ -36,18 +38,18 @@ const SetupP = ({
                                 onSaveGroup={onSaveGroup} />
                 </div>
             )}
-            <div className="row">
-                <button className="btn btn-success btn-lg"
+            <div className="row group-actions">
+                <button className="btn btn-success"
                         onClick={onAddGroup}>
                     Add Group
                 </button>
-                <button className="btn btn-default btn-lg"
+                <button className="btn btn-default"
                         disabled={isExactlyOneGroup}
                         onClick={onRemoveGroup}>
                     Remove last Group
                 </button>
             </div>
-            <div className="row">
+            <div className="row main-actions">
                 <button className="btn btn-primary btn-lg"
                         disabled={!isRaceStartable}
                         onClick={onGoToRace}>

@@ -9,8 +9,8 @@ const RaceGroupP = ({
     onStartGroupChronos
 }) => (
     <div className="group container">
-        <b>Group {groupNumber}</b>&nbsp;
-        <button className="btn btn-success"
+        <span className="group-number">Group {groupNumber}</span>
+        <button className="btn btn-success group-actions"
                 disabled={isAtLeastOneChronoStarted(groupNumber)}
                 onClick={() => onStartGroupChronos(groupNumber)}>
             Start all chronos within group

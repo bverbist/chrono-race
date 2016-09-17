@@ -7,11 +7,13 @@ const SetupGroup = ({number, nrOfTeams, onSaveGroup}) => {
 
     return (
         <div className="group">
-            <p><b>Group {number}:</b></p>
+            <p><span className="group-number">Group {number}:</span></p>
             <p>
-                Number of teams:&nbsp;
+                <span className="label">Number of teams:</span>
                 <input type="number"
                        value={nrOfTeams}
+                       min="1"
+                       max="99"
                        onChange={(event) => saveGroup(event.target.value)} />
             </p>
         </div>
