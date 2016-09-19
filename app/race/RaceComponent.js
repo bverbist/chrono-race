@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {isOnRacePage, getRaceTitle, getGroups, getStoppedTeamsSortedOnAscendingChrono} from './raceSelectors';
 import RaceGroup from './group/RaceGroupComponent';
-import FinishedTeam from './team/FinishedTeamComponent';
+import FinishedTeams from './team/FinishedTeamsComponent';
 
 const RaceP = ({
     isVisible, raceTitle, groups, finishedTeams
@@ -18,19 +18,17 @@ const RaceP = ({
             </div>
         </div>
         <div className="container">
-            {groups.map((group, index) =>
-                <div className="row" key={index}>
-                    <RaceGroup groupNumber={group.number} />
-                    <hr className={index === groups.length - 1 ? 'hidden' : ''} />
+            <div className="row">
+                {groups.map((group, index) =>
+                    <div className="col-lg-6 col-xl-4" key={index}>
+                        <RaceGroup groupNumber={group.number} />
+                    </div>
+                )}
+                <div className="col-lg-6 col-xl-4">
+                    <h3>Finished teams</h3>
+                    <FinishedTeams finishedTeams={finishedTeams} groups={groups} />
                 </div>
-            )}
-            <br />
-            <h3>Finished teams</h3>
-            {finishedTeams.map((team, index) =>
-                <div className="row teams" key={index}>
-                    <FinishedTeam team={team} />
-                </div>
-            )}
+            </div>
         </div>
     </div>
 );
